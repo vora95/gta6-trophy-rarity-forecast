@@ -213,7 +213,7 @@ def forecast_earners(post_break, index, target, base=None):
             if fit is not None:
                 slope, intercept = fit
                 value = math.exp(slope * log_hours(base, target) + intercept) - 0.5
-                return max(0.0, value)
+                return min(4.0 * last_earners, max(0.0, value))
     return max(0.0, last_earners)
 
 
